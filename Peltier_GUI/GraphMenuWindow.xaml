@@ -1,0 +1,34 @@
+﻿<Window x:Class="Peltier_GUI.GraphMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Parametri Grafici" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Asse X" Margin="5" Grid.Column="0" Grid.Row="0">            
+            <StackPanel Orientation="Vertical">
+                <GroupBox>
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Margin="3" Name="XAxisAutoRB" Checked="XAxisAutoRB_Checked">Auto</RadioButton>
+                        <RadioButton Margin="3" Name="XAxisManualRB" Checked="XAxisManualRB_Checked">Manuale</RadioButton>
+                    </StackPanel>                    
+                </GroupBox>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label>Minimo</Label>
+                    <TextBox MinWidth="30" Margin="3" Name="XMin_TextBox" LostFocus="XMin_TextBox_LostFocus" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="3">
+                    <Label>Massimo</Label>
+                    <TextBox MinWidth="30" Margin="3" Name="XMax_TextBox" LostFocus="XMax_TextBox_LostFocus" />
+                </StackPanel>
+            </StackPanel>            
+        </GroupBox>
+    </Grid>
+</Window>

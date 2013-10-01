@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomaticMode_Label" xml:space="preserve">
+    <value>Automatic</value>
+    <comment>Display the Automatic Label</comment>
+  </data>
+  <data name="Button_Connect" xml:space="preserve">
+    <value>Connect</value>
+    <comment>Display "Connect" into the Connect Button</comment>
+  </data>
+  <data name="Button_Disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+    <comment>Display "Disconnect" into the Connect Button</comment>
+  </data>
+  <data name="COMPort_Label_Def" xml:space="preserve">
+    <value>COM Port</value>
+    <comment>Display the Label for the COM ListBox</comment>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ConnectedIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\ConnectedIcon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectedImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ConnectedImg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ConnectionGroup_Label" xml:space="preserve">
+    <value>Connection</value>
+    <comment>Display The Connection GroupBox Label</comment>
+  </data>
+  <data name="ControlMode_Label" xml:space="preserve">
+    <value>Mode</value>
+    <comment>Display Mode label</comment>
+  </data>
+  <data name="ControlTabDef" xml:space="preserve">
+    <value>Control</value>
+    <comment>Display "Control" Into the Tab Item</comment>
+  </data>
+  <data name="DebugTabDef" xml:space="preserve">
+    <value>Debug</value>
+    <comment>Display "Debug" into the Tab Item</comment>
+  </data>
+  <data name="DisconnectedIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\DisconnectedIcon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DisconnectedImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\DisconnectedImg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ElapseTime_Label" xml:space="preserve">
+    <value>Elapsed</value>
+    <comment>Display the Elapsed Time Label</comment>
+  </data>
+  <data name="Error_ReadConfFile" xml:space="preserve">
+    <value>Error Reading the Configuration File</value>
+    <comment>Display an Error into the Config File Parsing</comment>
+  </data>
+  <data name="Error_ReadConfLanguage" xml:space="preserve">
+    <value>Error Reading the Language Configuration</value>
+    <comment>Display the Conf Language Error Message</comment>
+  </data>
+  <data name="GraphTitle_Label" xml:space="preserve">
+    <value>Temperature of Peltier Cell System</value>
+    <comment>Display the Graph Title</comment>
+  </data>
+  <data name="GraphX_Label" xml:space="preserve">
+    <value>Time [Minutes]</value>
+    <comment>Display the XGraph Label</comment>
+  </data>
+  <data name="GraphY_Label" xml:space="preserve">
+    <value>T [°C]</value>
+    <comment>Display the Y Graph Label</comment>
+  </data>
+  <data name="Graph_PeltierCurve" xml:space="preserve">
+    <value>Peltier Cell Temperature</value>
+    <comment>Display the Peltier Label</comment>
+  </data>
+  <data name="Graph_RoomCurve" xml:space="preserve">
+    <value>Room Temperature</value>
+    <comment>Display the Room Temperature Label</comment>
+  </data>
+  <data name="ManualMode_Label" xml:space="preserve">
+    <value>Manual</value>
+    <comment>Display the Manual Label</comment>
+  </data>
+  <data name="ManualTabDef" xml:space="preserve">
+    <value>Manual Control</value>
+    <comment>Display "Manual Control" Into the Tab Item</comment>
+  </data>
+  <data name="MenuItemExitName" xml:space="preserve">
+    <value>Exit</value>
+    <comment>Display "Exit" into the Menu</comment>
+  </data>
+  <data name="MenuItemFileName" xml:space="preserve">
+    <value>File</value>
+    <comment>Display "File" into the menu Item</comment>
+  </data>
+  <data name="MenuItemHelpAbout" xml:space="preserve">
+    <value>About</value>
+    <comment>Display the About Entry into the Menu bar</comment>
+  </data>
+  <data name="MenuItemHelpName" xml:space="preserve">
+    <value>Help</value>
+    <comment>Display "Help" into the Menu Bar</comment>
+  </data>
+  <data name="MenuItemOptionsName" xml:space="preserve">
+    <value>Options</value>
+    <comment>Display "Options" into the Menu Bar</comment>
+  </data>
+  <data name="MenuItem_COM_Options" xml:space="preserve">
+    <value>COM Options</value>
+    <comment>Display "COM Options" Into the Menu</comment>
+  </data>
+  <data name="MenuItem_Graph_Options" xml:space="preserve">
+    <value>Graphics Options</value>
+    <comment>Display The Graphics Options Menu Label</comment>
+  </data>
+  <data name="MenuItem_PID_Options" xml:space="preserve">
+    <value>PID Options</value>
+    <comment>Display The PID Options Menu Label</comment>
+  </data>
+  <data name="Peltier_Temperature_Label" xml:space="preserve">
+    <value>Temperature Peltier Cell</value>
+    <comment>Display Peltier Cell Temperature Label</comment>
+  </data>
+  <data name="PortName_Label" xml:space="preserve">
+    <value>Port Name</value>
+    <comment>Display 'Port Name" into the Label</comment>
+  </data>
+  <data name="Room_Temperature_Label" xml:space="preserve">
+    <value>Room Temperature</value>
+    <comment>Display the Room Temperature Label</comment>
+  </data>
+  <data name="StatusBar_Connected" xml:space="preserve">
+    <value>Connected</value>
+    <comment>Display "Connected" into the status bar</comment>
+  </data>
+  <data name="StatusBar_Disconnected" xml:space="preserve">
+    <value>Disconneted</value>
+    <comment>Displays "Disconneted" into the status bar</comment>
+  </data>
+  <data name="TemperatureGroupBox_Label" xml:space="preserve">
+    <value>Temperature</value>
+    <comment>Display GroupBox Temperature Label</comment>
+  </data>
+  <data name="TemperatureGroupBox_Label1" xml:space="preserve">
+    <value>Target Temeperature</value>
+    <comment>Display the Label for the Target Temperature</comment>
+  </data>
+</root>

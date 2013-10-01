@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <ControlTabDef>Control</ControlTabDef>
+  <ManualTabDef>Manual Control</ManualTabDef>
+  <DebufTabDef>Debug</DebufTabDef>
+  <Cnt_PortName_Label>Port Name</Cnt_PortName_Label>
+  <Cnt_PortName_Grp_Def>Connection</Cnt_PortName_Grp_Def>
+  <Connection_Button_Label>Connect</Connection_Button_Label>
+  <Disconnect_Button_Label>Disconnect</Disconnect_Button_Label>
+  <CntMode_label>Mode</CntMode_label>
+  <AutomaticMode_Label>Automatic</AutomaticMode_Label>
+  <ManualMode_Label>Manual</ManualMode_Label>
+  <Target_Temperature_Grp_Def>Target Temperature</Target_Temperature_Grp_Def>
+  <Temperature_Grp_Def>Temperature</Temperature_Grp_Def>
+  <Peltier_Temperature_Label>Temperature Peltier Cell</Peltier_Temperature_Label>
+  <Room_Temperature_Label>Room Temperature</Room_Temperature_Label>
+  <Elapsed>Elapsed Time</Elapsed>
+  <Graph>
+    <Title>Peltier Cell System Temperatures</Title>
+    <Y_Title>T [°C]</Y_Title>
+    <X_Title>time [Minutes]</X_Title>
+    <Peltier_Curve_Label>Peltier Cell Temperature</Peltier_Curve_Label>
+    <Room_Curve_Label>Room Temperature</Room_Curve_Label>
+  </Graph>
+</root>
