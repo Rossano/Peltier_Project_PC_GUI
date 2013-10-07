@@ -108,10 +108,15 @@ namespace Peltier_GUI
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            parent._peltier._avr.setStopbits(comPort.StopBits);
-            parent._peltier._avr.setParity(comPort.Parity);
-            parent._peltier._avr.setHandshake(comPort.Handshake);
-            parent._peltier._avr.setBaudrate(comPort.BaudRate);
+            //parent._peltier._avr.setStopbits(comPort.StopBits);
+            //parent._peltier._avr.setParity(comPort.Parity);
+            //parent._peltier._avr.setHandshake(comPort.Handshake);
+            //parent._peltier._avr.setBaudrate(comPort.BaudRate);
+            ((App)(Application.Current))._peltier._avr.setStopbits(comPort.StopBits);
+            ((App)(Application.Current))._peltier._avr.setParity(comPort.Parity);
+            ((App)(Application.Current))._peltier._avr.setHandshake(comPort.Handshake);
+            ((App)(Application.Current))._peltier._avr.setBaudrate(comPort.BaudRate);
+
             //parent.avr.stopBits = comPort.StopBits;
             //parent.avr.parity = comPort.Parity;
             //parent.avr.handshake = comPort.Handshake;

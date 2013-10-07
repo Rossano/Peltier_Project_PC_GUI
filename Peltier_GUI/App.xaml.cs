@@ -11,6 +11,7 @@ namespace Peltier_GUI
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-    {        
+    {
+        public Peltier _peltier;
     }
 }

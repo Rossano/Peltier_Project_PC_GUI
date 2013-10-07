@@ -3,10 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ProjectProperties="clr-namespace:Peltier_GUI.Properties"
         xmlns:local="clr-namespace:Peltier_GUI"
-        Title="Peltier GUI" MinHeight="540" MinWidth="820" SizeChanged="Window_SizeChanged" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="588" d:DesignWidth="819" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" Icon="file:///C:/Users/Ross/Documents/Visual%20Studio%202010/Projects/Peltier_GUI/Peltier_GUI/images/AstroIcon1.png">
+        Title="Peltier GUI" MinHeight="540" MinWidth="820" SizeChanged="Window_SizeChanged" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="588" d:DesignWidth="819" SizeToContent="WidthAndHeight" Loaded="Window_Loaded" Icon="/Peltier_GUI;component/images/ARA2.ico">
     
     <!-- Command Binding Definition for Custom commands -->
     <Window.CommandBindings>
+        <!-- Help Command Binding-->
+        <CommandBinding Command="Help" Executed="Help_Executed" />
         <!-- Bind Close Command -->
         <CommandBinding Command="Close" Executed="Close_Executed" />
         <!-- Com Options Command -->
@@ -30,50 +32,31 @@
         </Grid.RowDefinitions>
         <!-- Menu Definition -->
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <!-- File Menu -->
-            <!--<MenuItem Header="File">
-                <MenuItem Header="Exit" Command="Close" />
-            </MenuItem>-->
-            <!-- Options Menu -->
-            <!--<MenuItem Header="Opzioni">
-                <MenuItem Header="Parametri Porta COM" Name="COM_Options" Click="COM_Option_Executed"/> --> <!--Command="COM_Options" />--> 
-               <!-- <MenuItem Header="Parametri Grafico" Name="GraphOptions" Click="GraphOptions_Click"/>
-                <Separator/>
-                <MenuItem Header="Parametri PID" Name="PID_Options" Click="PID_Options_Click" />
-            </MenuItem>
-            <MenuItem HorizontalAlignment="Right" Header="Help">
-                <MenuItem Header="Help" Name="HelpMenu" Click="HelpMenu_Click" />
-                <Separator/>
-                <MenuItem Header="About" Name="AboutItem" Click="AboutItem_Click" />
-            </MenuItem>-->
-            <MenuItem Name="MenuItemFileName" x:Uid="MenuItemFileName">
-                <MenuItem  x:Uid="MenuItemExitName" Name="MenuItemExitName" Command="Close" /> <!--Header="Exit"-->
+            <!-- File Menu -->                                    
+            <MenuItem Name="MenuItemFileName" x:Uid="MenuItemFileName" Header="Item 1">
+                <MenuItem  x:Uid="MenuItemExitName" Name="MenuItemExitName" Command="Close" Header="Item 1.1"/>
+                <Separator />
+                <MenuItem Name="NewFWLabel" x:Uid="NewFWLabel" Header="Item 1.2" Click="NewFW_Click"/>
+                <MenuItem Name="DebugLabel" x:Uid="DebugLabel" Header="Item 1.3" Click="Debug_Click"/>
             </MenuItem>
             <!-- Options Menu -->
-            <MenuItem Header="Opzioni" Name="MenuItemOptionsName" x:Uid="MenuItemOptionsName">
-                <MenuItem Header="Parametri Porta COM" Name="COM_Options" x:Uid="COM_Options" Click="COM_Option_Executed"/>
+            <MenuItem Header="Item 2" Name="MenuItemOptionsName" x:Uid="MenuItemOptionsName">
+                <MenuItem Header="Item 2.1" Name="COM_Options" x:Uid="COM_Options" Click="COM_Option_Executed"/>
                 <!--Command="COM_Options" />-->
-                <MenuItem Header="Parametri Grafico" Name="GraphOptions" x:Uid="GraphOptions" Click="GraphOptions_Click"/>
+                <MenuItem Header="Item 2.2" Name="GraphOptions" x:Uid="GraphOptions" Click="GraphOptions_Click"/>
                 <Separator/>
-                <MenuItem Header="Parametri PID" Name="PID_Options" x:Uid="PID_Options" Click="PID_Options_Click" />
+                <MenuItem Header="Item 2.3" Name="PID_Options" x:Uid="PID_Options" Click="PID_Options_Click" />
             </MenuItem>
-            <MenuItem HorizontalAlignment="Right" Header="Help">
-                <MenuItem Header="Help" Name="HelpMenu" x:Uid="HelpMenu" Click="HelpMenu_Click" />
+            <!-- Help Menu -->
+            <MenuItem HorizontalAlignment="Right" Header="Item 3" Name="HelpMenuItemName">
+                <MenuItem Header="Item 3.1" Name="HelpMenu" x:Uid="HelpMenu" Click="HelpMenu_Click" />
                 <Separator/>
-                <MenuItem Header="About" Name="AboutItem" x:Uid="AboutItem" Click="AboutItem_Click" />
+                <MenuItem Header="Item 3.2" Name="AboutItem" x:Uid="AboutItem" Click="AboutItem_Click" />
             </MenuItem>
 
         </Menu>
         <TabControl Name="MainTab" Grid.Row="1" MinHeight="450" Margin="0,0,0,2">
-            <TabItem Name="ControlTab" >
-                <!--<GroupBox Header="Connessione" Margin="5">
-                    <StackPanel Orientation="Horizontal" MaxHeight="40">
-                        <Label Margin="5" VerticalAlignment="Center" MaxHeight="30">Porta COM</Label>
-                        <ComboBox MinWidth="50" Name="ComPortComboBox" SelectionChanged="ComPortComboBox_SelectionChanged" 
-                              Margin="5" MaxHeight="30"/>
-                        <Button Margin="5" Name="ConnectButton" Click="ConnectButton_Click" MaxHeight="30">Connetti</Button>
-                    </StackPanel>
-                </GroupBox>-->
+            <TabItem Name="ControlTab" >                
                 <GroupBox Name="Connection_Box" Width="330" MinHeight="450">
                     <StackPanel Margin="5" Orientation="Vertical" Height="Auto" >
                         <StackPanel Margin="5" Orientation="Horizontal" Height="Auto">
@@ -220,7 +203,6 @@
                     
                 </StackPanel>
             </TabItem>
-
         </TabControl>
         
         <!-- Zed Graph Canvas this storage class is to store the graph -->   
@@ -236,6 +218,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30" />
@@ -249,7 +232,11 @@
             <StatusBarItem Grid.Column="1">
                 <Label Name="ConnectioStatusLabel" x:Uid="StatusBar_Disconneted" MinHeight="30" Content="Test"/>
             </StatusBarItem>
-            <!--<Image Name="ConnectionImage" Stretch="Uniform" Margin="10,10,30,30" />-->
+            <StatusBarItem Grid.Column="2" >
+                <Border >
+                    <Label x:Uid="StatusBar_Version" Name="StatusBar_Version" Content="Ver" FontSize="10"/>
+                </Border>
+            </StatusBarItem>
         </StatusBar>
     </Grid>
    

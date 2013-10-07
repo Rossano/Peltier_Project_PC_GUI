@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Peltier_GUI
 {
@@ -14,6 +15,16 @@ namespace Peltier_GUI
         {
             comWindow = new COM_Window(this);            
             comWindow.ShowDialog();
+        }
+
+        /// <summary>
+        /// Execution of the Help event.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="ExecutedRoutedEventArgs"/> instance containing the event data.</param>
+        private void Help_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            System.Windows.Forms.Help.ShowHelp(null, @"../../Help/Peltier_GUI_Help_en_US.chm");
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -33,7 +44,8 @@ namespace Peltier_GUI
 
         private void HelpMenu_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show("Inscrisci qui Help Menu", "Informazione", MessageBoxButton.OK, MessageBoxImage.Information);
+            //System.Windows.MessageBox.Show("Inscrisci qui Help Menu", "Informazione", MessageBoxButton.OK, MessageBoxImage.Information);
+            Help_Executed(sender, e as ExecutedRoutedEventArgs);
         }
 
         private void AboutItem_Click(object sender, RoutedEventArgs e)

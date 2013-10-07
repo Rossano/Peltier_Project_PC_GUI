@@ -121,6 +121,10 @@
     <value>Automatic</value>
     <comment>Display the Automatic Label</comment>
   </data>
+  <data name="BootloaderCOMLabel" xml:space="preserve">
+    <value>Bootloader COM Port</value>
+    <comment>Display the label to select the Bootloader COM</comment>
+  </data>
   <data name="Button_Connect" xml:space="preserve">
     <value>Connect</value>
     <comment>Display "Connect" into the Connect Button</comment>
@@ -128,6 +132,10 @@
   <data name="Button_Disconnect" xml:space="preserve">
     <value>Disconnect</value>
     <comment>Display "Disconnect" into the Connect Button</comment>
+  </data>
+  <data name="CancelDownloadButton" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Display the Content of the FW Download Cancel Button</comment>
   </data>
   <data name="COMPort_Label_Def" xml:space="preserve">
     <value>COM Port</value>
@@ -152,6 +160,10 @@
     <value>Control</value>
     <comment>Display "Control" Into the Tab Item</comment>
   </data>
+  <data name="DebugLabel" xml:space="preserve">
+    <value>Debug</value>
+    <comment>Display "Debug" Label</comment>
+  </data>
   <data name="DebugTabDef" xml:space="preserve">
     <value>Debug</value>
     <comment>Display "Debug" into the Tab Item</comment>
@@ -162,9 +174,17 @@
   <data name="DisconnectedImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\DisconnectedImg.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DownloadButton" xml:space="preserve">
+    <value>Download</value>
+    <comment>Display the Content of the FW Download Button</comment>
+  </data>
   <data name="ElapseTime_Label" xml:space="preserve">
     <value>Elapsed</value>
     <comment>Display the Elapsed Time Label</comment>
+  </data>
+  <data name="Error_HelpFileNotFound" xml:space="preserve">
+    <value>Help CHM file not found!\nApplication will run without help functions.</value>
+    <comment>Display The CHM not found Error</comment>
   </data>
   <data name="Error_ReadConfFile" xml:space="preserve">
     <value>Error Reading the Configuration File</value>
@@ -173,6 +193,10 @@
   <data name="Error_ReadConfLanguage" xml:space="preserve">
     <value>Error Reading the Language Configuration</value>
     <comment>Display the Conf Language Error Message</comment>
+  </data>
+  <data name="FW_Download_Wnd_Title" xml:space="preserve">
+    <value>Download New Firmware</value>
+    <comment>Display the title of the window for downloading a new firmware</comment>
   </data>
   <data name="GraphTitle_Label" xml:space="preserve">
     <value>Temperature of Peltier Cell System</value>
@@ -193,6 +217,14 @@
   <data name="Graph_RoomCurve" xml:space="preserve">
     <value>Room Temperature</value>
     <comment>Display the Room Temperature Label</comment>
+  </data>
+  <data name="LoadNewFWButton" xml:space="preserve">
+    <value>Open</value>
+    <comment>Display the message into the load button for the new FW download</comment>
+  </data>
+  <data name="LoadNewFWLabel" xml:space="preserve">
+    <value>Firmware To Download</value>
+    <comment>Display the Message to select new FW to donwload</comment>
   </data>
   <data name="ManualMode_Label" xml:space="preserve">
     <value>Manual</value>
@@ -233,6 +265,10 @@
   <data name="MenuItem_PID_Options" xml:space="preserve">
     <value>PID Options</value>
     <comment>Display The PID Options Menu Label</comment>
+  </data>
+  <data name="NewFWLabel" xml:space="preserve">
+    <value>Download</value>
+    <comment>Display the label for a New Firmware Download</comment>
   </data>
   <data name="Peltier_Temperature_Label" xml:space="preserve">
     <value>Temperature Peltier Cell</value>

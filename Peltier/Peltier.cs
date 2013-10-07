@@ -138,7 +138,7 @@ namespace Peltier_GUI
         /// </summary>
         /// <param name="cmd">The command to be sent to AVR.</param>
         /// <returns></returns>
-        protected bool SendCommand(string cmd)
+        public bool SendCommand(string cmd)
         {
             //  Create the request string
             string request = cmd + "\r\n";
@@ -188,15 +188,18 @@ namespace Peltier_GUI
 
         /// <summary>
         /// PInitialize the Peltier Instance.
-        /// </summary>
-        public void PeltierInit()
+        /// </summary>        
+        public string PeltierInit()
+        //public void PeltierInit()
         {
+            string result;
             try
             {
                 //  Send the command to initialize the PWM channel connected to the Peltier Cell
-                InitPwm(Peltier_PWM);
+                result = InitPwm(Peltier_PWM);
                 //  Initialize the ADC channels connected to the Thermal Sensors
-                InitSensors();
+                result += InitSensors();
+                return result;
             }
             catch (Exception ex)
             {
@@ -209,8 +212,9 @@ namespace Peltier_GUI
         /// </summary>
         /// <param name="pwm">The PWM channel.</param>
         /// <exception cref="System.Exception"></exception>
-        /// <exception cref="System.ArgumentOutOfRangeException">Invalid PWM channel</exception>
-        protected void InitPwm(uint pwm)
+        /// <exception cref="System.ArgumentOutOfRangeException">Invalid PWM channel</exception>        
+        protected string InitPwm(uint pwm)
+        //protected void InitPwm(uint pwm)
         {
             //  Initially check if the pwm channel is possible
             if ((pwm >= 0) && (pwm < 5))
@@ -225,6 +229,7 @@ namespace Peltier_GUI
                     //  Else send an exception using the resulting string as message
                     if (SendCommand(cmd) == true) result = avrResult.Dequeue();
                     else throw new Exception(avrResult.Dequeue());
+                    return result;
                 }
                 catch (Exception ex)
                 {
@@ -238,7 +243,8 @@ namespace Peltier_GUI
         /// Initialize the ADC channel connected to the Temperature sensors.
         /// </summary>
         /// <exception cref="System.Exception"></exception>
-        protected void InitSensors()
+        protected string InitSensors()
+        //protected void InitSensors()
         {
             try
             {
@@ -249,7 +255,8 @@ namespace Peltier_GUI
                 //  Read the result from the FIFO to clean it up.
                 //  Else send an exception using the resulting string as message
                 if (SendCommand(cmd)) result = avrResult.Dequeue();
-                else throw new Exception(avrResult.Dequeue());                
+                else throw new Exception(avrResult.Dequeue());
+                return result;
             }
             catch (Exception ex)
             {
@@ -264,7 +271,8 @@ namespace Peltier_GUI
         /// <param name="level">The new PWM level.</param>
         /// <exception cref="System.Exception"></exception>
         /// <exception cref="System.ArgumentOutOfRangeException">Invalid PWM channel</exception>
-        public void PwmSet (uint channel, uint level)
+        public string PwmSet (uint channel, uint level)
+        // public void PwmSet (uint channel, uint level)
         {
             //  Firstly check if the PWM channel is coherent
             if ((channel >= 0) && (channel < 5))
@@ -279,6 +287,7 @@ namespace Peltier_GUI
                     //  Else send an exception using the resulting string as message.
                     if (SendCommand(cmd)) result = avrResult.Dequeue();
                     else throw new Exception(avrResult.Dequeue());
+                    return result;
                 }
                 catch (Exception ex)
                 {
@@ -294,7 +303,8 @@ namespace Peltier_GUI
         /// <param name="channel">The PWM channel.</param>
         /// <exception cref="System.Exception"></exception>
         /// <exception cref="System.ArgumentOutOfRangeException">Invalid PWM channel</exception>
-        public void PwmStart(uint channel)
+        public string PwmStart(uint channel)
+        // public void PwmStart(uint channel)
         {
             //  Firstly check if the PWM channel is coherent
             if ((channel >= 0) && (channel < 5))
@@ -309,6 +319,7 @@ namespace Peltier_GUI
                     //  Else send an exception using the resulting string as message.
                     if (SendCommand(cmd)) result = avrResult.Dequeue();
                     else throw new Exception(avrResult.Dequeue());
+                    return result;
                 }
                 catch (Exception ex)
                 {
@@ -324,7 +335,8 @@ namespace Peltier_GUI
         /// <param name="channel">The PWM channel.</param>
         /// <exception cref="System.Exception"></exception>
         /// <exception cref="System.ArgumentOutOfRangeException">Invalid PWM channel</exception>
-        public void PwmStop(uint channel)
+        public string PwmStop(uint channel)
+        // public void PwmStop(uint channel)
         {
             //  Firstly check if the PWM channel is coherent
             if ((channel >= 0) && (channel < 5))
@@ -339,6 +351,7 @@ namespace Peltier_GUI
                     //  Else send an exception using the resulting string as message.
                     if (SendCommand(cmd)) result = avrResult.Dequeue();
                     else throw new Exception(avrResult.Dequeue());
+                    return result;
                 }
                 catch (Exception ex)
                 {
@@ -472,8 +485,10 @@ namespace Peltier_GUI
         /// Gets the Peltier Cell and Room temperatures.
         /// This method reads the ADC channels connected to the temperature sensors and convert the result as temperatures.
         /// </summary>
-        public void GetTemperatures()
+        public string GetTemperatures()
+        //public void GetTemperatures()
         {
+            string result;
             try
             {
                 //  Read the Peltier Cell temperature and convert it into voltage
@@ -484,6 +499,8 @@ namespace Peltier_GUI
                 //  Convert the ADV voltage values into temperature
                 room_temperature = (VADC_Room - 0.5) / 0.01;
                 peltier_temperature = (VADC_Peltier - 0.5) / 0.01;
+                result = string.Format("Peltier T={0}\nRoom T={1}\n", peltier_temperature, room_temperature);
+                return result;
             }
             catch (Exception ex)
             {
@@ -495,8 +512,10 @@ namespace Peltier_GUI
         /// Gets the Peltier Cell and Room temperatures.
         /// This method reads the ADC channels connected to the temperature sensors and convert the result as temperatures.
         /// </summary>
-        public void GetTemperatures(uint samples)
+        public string GetTemperatures(uint samples)
+        //public void GetTemperatures(uint samples)
         {
+            string result;
             try
             {
                 double foo1 = 0.0;
@@ -504,7 +523,7 @@ namespace Peltier_GUI
                 for (uint i = 0; i < samples; i++)
                 {
                     //  Read the Peltier Cell temperature and convert it into voltage
-                    double VADC_Peltier = GetTemperature(Peltier_Temperature_ADC) * ADC_Ref / 1023;
+                    double VADC_Peltier = GetTemperature(Peltier_Temperature_ADC) * ADC_Ref / 1023;                    
                     //                System.Threading.Thread.Sleep(100);
                     //  Read the Room temperature and convert is into voltage
                     double VADC_Room = GetTemperature(Room_Temperature_ADC) * ADC_Ref / 1023;
@@ -514,6 +533,8 @@ namespace Peltier_GUI
                 }
                 room_temperature = foo1 / samples;
                 peltier_temperature = foo2 / samples;
+                result = string.Format("Peltier T={0}\nRoom T={1}", peltier_temperature, room_temperature);
+                return result;
             }
             catch (Exception ex)
             {

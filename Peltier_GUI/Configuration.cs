@@ -99,7 +99,7 @@ namespace Peltier_GUI
                     {
                         int baud = nodes.Current.ValueAsInt;
                         AVR_COM_Baudrate = baud;
-                        if (_peltier != null) _peltier._avr.setBaudrate(baud);
+                        if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setBaudrate(baud);
                     }
                     catch (Exception ex)
                     {
@@ -144,25 +144,25 @@ namespace Peltier_GUI
                         case "None":
                             {
                                 AVR_COM_Stopbits = StopBits.None;
-                                if (_peltier != null) _peltier._avr.setStopbits(StopBits.None);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setStopbits(StopBits.None);
                                 break;
                             }
                         case "One":
                             {
                                 AVR_COM_Stopbits = StopBits.One;
-                                if (_peltier != null) _peltier._avr.setStopbits(StopBits.One);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setStopbits(StopBits.One);
                                 break;
                             }
                         case "OnePointFive":
                             {
                                 AVR_COM_Stopbits = StopBits.OnePointFive;
-                                if (_peltier != null) _peltier._avr.setStopbits(StopBits.OnePointFive);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setStopbits(StopBits.OnePointFive);
                                 break;
                             }
                         case "Two":
                             {
                                 AVR_COM_Stopbits = StopBits.Two;
-                                if (_peltier != null) _peltier._avr.setStopbits(StopBits.Two);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setStopbits(StopBits.Two);
                                 break;
                             }
                         default: throw new Exception("AVR COM Bad Stopbit Format");
@@ -185,31 +185,31 @@ namespace Peltier_GUI
                         case "None":
                             {
                                 AVR_COM_Parity = Parity.None;
-                                if (_peltier != null) _peltier._avr.setParity(Parity.None);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setParity(Parity.None);
                                 break;
                             }
                         case "Even":
                             {
                                 AVR_COM_Parity = Parity.Even;
-                                if (_peltier != null) _peltier._avr.setParity(Parity.Even);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setParity(Parity.Even);
                                 break;
                             }
                         case "Mark":
                             {
                                 AVR_COM_Parity = Parity.Mark;
-                                if (_peltier != null) _peltier._avr.setParity(Parity.Mark);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setParity(Parity.Mark);
                                 break;
                             }
                         case "Odd":
                             {
                                 AVR_COM_Parity = Parity.Odd;
-                                if (_peltier != null) _peltier._avr.setParity(Parity.Odd);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setParity(Parity.Odd);
                                 break;
                             }
                         case "Space":
                             {
                                 AVR_COM_Parity = Parity.Space;
-                                if (_peltier != null) _peltier._avr.setParity(Parity.Space);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setParity(Parity.Space);
                                 break;
                             }
                         default: throw new Exception("AVR COM Bad Parity Format");
@@ -232,25 +232,25 @@ namespace Peltier_GUI
                         case "None":
                             {
                                 AVR_COM_Handshake = Handshake.None;
-                                if (_peltier != null) _peltier._avr.setHandshake(Handshake.None);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setHandshake(Handshake.None);
                                 break;
                             }
                         case "RTS":
                             {
                                 AVR_COM_Handshake = Handshake.RequestToSend;
-                                if (_peltier != null) _peltier._avr.setHandshake(Handshake.RequestToSend);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setHandshake(Handshake.RequestToSend);
                                 break;
                             }
                         case "XonXoff":
                             {
                                 AVR_COM_Handshake = Handshake.XOnXOff;
-                                if (_peltier != null) _peltier._avr.setHandshake(Handshake.XOnXOff);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setHandshake(Handshake.XOnXOff);
                                 break;
                             }
                         case "XonXoffRTS":
                             {
                                 AVR_COM_Handshake = Handshake.RequestToSendXOnXOff;
-                                if (_peltier != null) _peltier._avr.setHandshake(Handshake.RequestToSendXOnXOff);
+                                if (((App)(Application.Current))._peltier != null) ((App)(Application.Current))._peltier._avr.setHandshake(Handshake.RequestToSendXOnXOff);
                                 break;
                             }
                         default: throw new Exception("AVR COM Bad Handshake Format");
@@ -592,11 +592,14 @@ namespace Peltier_GUI
                 //  Menu Definitions
                 //
                 MenuItemFileName.Header = Properties.Resources.MenuItemFileName;
+                NewFWLabel.Header = Properties.Resources.NewFWLabel;
+                DebugLabel.Header = Properties.Resources.DebugLabel;
                 MenuItemExitName.Header=Properties.Resources.MenuItemExitName;
                 MenuItemOptionsName.Header = Properties.Resources.MenuItemOptionsName;
                 COM_Options.Header = Properties.Resources.MenuItem_COM_Options;
                 GraphOptions.Header = Properties.Resources.MenuItem_Graph_Options;
                 PID_Options.Header = Properties.Resources.MenuItem_PID_Options;
+                HelpMenuItemName.Header = Properties.Resources.MenuItemHelpName;
                 HelpMenu.Header = Properties.Resources.MenuItemHelpName;
                 AboutItem.Header = Properties.Resources.MenuItemHelpAbout;
                 //

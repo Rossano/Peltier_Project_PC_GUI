@@ -70,6 +70,15 @@ namespace Peltier_GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bootloader COM Port.
+        /// </summary>
+        public static string BootloaderCOMLabel {
+            get {
+                return ResourceManager.GetString("BootloaderCOMLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connect.
         /// </summary>
         public static string Button_Connect {
@@ -84,6 +93,15 @@ namespace Peltier_GUI.Properties {
         public static string Button_Disconnect {
             get {
                 return ResourceManager.GetString("Button_Disconnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelDownloadButton {
+            get {
+                return ResourceManager.GetString("CancelDownloadButton", resourceCulture);
             }
         }
         
@@ -140,6 +158,15 @@ namespace Peltier_GUI.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
+        public static string DebugLabel {
+            get {
+                return ResourceManager.GetString("DebugLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug.
+        /// </summary>
         public static string DebugTabDef {
             get {
                 return ResourceManager.GetString("DebugTabDef", resourceCulture);
@@ -161,11 +188,29 @@ namespace Peltier_GUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string DownloadButton {
+            get {
+                return ResourceManager.GetString("DownloadButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Elapsed.
         /// </summary>
         public static string ElapseTime_Label {
             get {
                 return ResourceManager.GetString("ElapseTime_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help CHM file not found!\nApplication will run without help functions..
+        /// </summary>
+        public static string Error_HelpFileNotFound {
+            get {
+                return ResourceManager.GetString("Error_HelpFileNotFound", resourceCulture);
             }
         }
         
@@ -184,6 +229,15 @@ namespace Peltier_GUI.Properties {
         public static string Error_ReadConfLanguage {
             get {
                 return ResourceManager.GetString("Error_ReadConfLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download New Firmware.
+        /// </summary>
+        public static string FW_Download_Wnd_Title {
+            get {
+                return ResourceManager.GetString("FW_Download_Wnd_Title", resourceCulture);
             }
         }
         
@@ -229,6 +283,24 @@ namespace Peltier_GUI.Properties {
         public static string GraphY_Label {
             get {
                 return ResourceManager.GetString("GraphY_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string LoadNewFWButton {
+            get {
+                return ResourceManager.GetString("LoadNewFWButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Firmware To Download.
+        /// </summary>
+        public static string LoadNewFWLabel {
+            get {
+                return ResourceManager.GetString("LoadNewFWLabel", resourceCulture);
             }
         }
         
@@ -319,6 +391,15 @@ namespace Peltier_GUI.Properties {
         public static string MenuItemOptionsName {
             get {
                 return ResourceManager.GetString("MenuItemOptionsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string NewFWLabel {
+            get {
+                return ResourceManager.GetString("NewFWLabel", resourceCulture);
             }
         }
         

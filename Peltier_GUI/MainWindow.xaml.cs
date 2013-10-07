@@ -43,7 +43,7 @@ namespace Peltier_GUI
             
         }
         //public AVR_Peltier.DUTCOMPortClass avr;        
-        public Peltier _peltier;
+        //public Peltier _peltier;
         private const string revisionString = "0.1";        
         private bool isArduino;
         private bool isArduinoBootloader;
@@ -57,14 +57,18 @@ namespace Peltier_GUI
         private zedGraphUserControl Graph;
         private DispatcherTimer mainTimer = new DispatcherTimer();
         private DispatcherTimer graphTimer = new DispatcherTimer();
+        private DebugWindow debugWnd = null;
         private bool isAuto = false;
         private bool debugMode = true;
         private const int MinTemp = -20;
         private const int MaxTemp = 30;
         private const uint ReadingSamples = 5;
-        private ResourceManager rm;
-        private Image ConnectedImage;
-        private Image DisconnectedImage;
+        private string[] HelpPaths;
+        private const string DefaultChm = "Peltier_GUI_Help_en_US.chm";
+        private string chmFullFileName; 
+//        private ResourceManager rm;
+//        private Image ConnectedImage;
+//        private Image DisconnectedImage;
 
         //public string ControlTabDef;
         //public string ManualTabDef;
@@ -170,6 +174,21 @@ namespace Peltier_GUI
             }
             catch
             { }
+            //  Get the Full help file name
+            bool found = false;
+            HelpPaths = new string[3] { "/Help/", "Help/", "../../Help/" };           
+            foreach (string s in HelpPaths)
+            {
+                if (File.Exists(s + DefaultChm))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                ErrDlg(Properties.Resources.Error_HelpFileNotFound, (Exception)null);
+            }
         }       
 
         /// <summary>
@@ -198,7 +217,7 @@ namespace Peltier_GUI
             //  Update the elapsed time label
             elapsedTimeLabel.Content = elapsedTime.ToString();
             //  Checks up the AVR connection and plot an error if it is found disconnected
-            if (!_peltier.GetAck())
+            if (!((App)(System.Windows.Application.Current))._peltier.GetAck())
             {
                 ConnectioStatusLabel.Content = Disconnected_Label;
                 ErrDlg("Error: AVR disconnected", (Exception)null);
@@ -212,14 +231,16 @@ namespace Peltier_GUI
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void graphTimer_Tick(object sender, EventArgs e)
         {
+            string res = "";
             //  Read the temperature from the AVR
-            _peltier.GetTemperatures();//ReadingSamples);            
+            res = ((App)(System.Windows.Application.Current))._peltier.GetTemperatures();//ReadingSamples);            
             double time = ((double)Environment.TickCount - StartTime) / 1000;
             //  Update the Graphics area with the new data points
-            Graph.UpdateGraph(new PointPair(time,_peltier.peltier_temperature), new PointPair(time, _peltier.room_temperature));           
+            Graph.UpdateGraph(new PointPair(time,((App)(System.Windows.Application.Current))._peltier.peltier_temperature), new PointPair(time, ((App)(System.Windows.Application.Current))._peltier.room_temperature));           
             //  Update the temperatures values
-            Temp1Label.Content = _peltier.peltier_temperature.ToString();
-            Temp2Label.Content = _peltier.room_temperature.ToString();
+            Temp1Label.Content = ((App)(System.Windows.Application.Current))._peltier.peltier_temperature.ToString();
+            Temp2Label.Content = ((App)(System.Windows.Application.Current))._peltier.room_temperature.ToString();
+            if (debugWnd.IsVisible) debugWnd.RXbuffer += res;
         }
 
         /// <summary>
@@ -249,18 +270,18 @@ namespace Peltier_GUI
                 int i = AVRBaudrateListBox.SelectedIndex;
                 switch (i)
                 {
-                    case 0: _peltier._avr.setBaudrate(9600); break;
-                    case 1: _peltier._avr.setBaudrate(19200); break;
-                    case 2: _peltier._avr.setBaudrate(38400); break;
-                    case 3: _peltier._avr.setBaudrate(57600); break;
-                    case 4: _peltier._avr.setBaudrate(112200); break;
-                    default: _peltier._avr.setBaudrate(9600); break;
+                    case 0: ((App)(System.Windows.Application.Current))._peltier._avr.setBaudrate(9600); break;
+                    case 1: ((App)(System.Windows.Application.Current))._peltier._avr.setBaudrate(19200); break;
+                    case 2: ((App)(System.Windows.Application.Current))._peltier._avr.setBaudrate(38400); break;
+                    case 3: ((App)(System.Windows.Application.Current))._peltier._avr.setBaudrate(57600); break;
+                    case 4: ((App)(System.Windows.Application.Current))._peltier._avr.setBaudrate(112200); break;
+                    default: ((App)(System.Windows.Application.Current))._peltier._avr.setBaudrate(9600); break;
                 }
 
             }
             catch (Exception ex)
             {
-                ErrDlg("Invalid Baudare Selection", (Exception)null);
+                ErrDlg("Invalid Baudrate Selection", (Exception)null);
             }
         }
 
@@ -276,11 +297,11 @@ namespace Peltier_GUI
             //
             //  Initialize the AVR element
             //
-            _peltier = new Peltier(AVR_COM_Name, isArduinoBootloader);
+            ((App)(System.Windows.Application.Current))._peltier = new Peltier(AVR_COM_Name, isArduinoBootloader);
             //
             //  Read the Firmware Versions and show it on a MessageBox
             //
-            string ver = _peltier.GetVersion();
+            string ver = ((App)(System.Windows.Application.Current))._peltier.GetVersion();
             //  Parse the received string to the the useful information only
             char[] delim = { ':', ' ', '\n' };
             string[] tokens = ver.Split(delim);
@@ -308,10 +329,12 @@ namespace Peltier_GUI
             mainTimer.Start();
             graphTimer.Start();
             //  Initialize the Peltier 
-            _peltier.PeltierInit();
-            //  Change the StatusBar label
-            //ConnectioStatusLabel.Content = Connected_Label;
+            ((App)(System.Windows.Application.Current))._peltier.PeltierInit();
+            //  Change the StatusBar Icon
+            ConnectionImage.Source = new BitmapImage(new Uri(@"/images/ConnectedImg.png", UriKind.Relative));
+            //  Change the StatusBar labels
             ConnectioStatusLabel.Content = Properties.Resources.StatusBar_Connected;
+            StatusBar_Version.Content = "FW Ver. : " + tokens[i] + " " + tokens[i + 1];
         }
 
         /// <summary>
@@ -339,7 +362,69 @@ namespace Peltier_GUI
             int blue = PWM_Value;
             green = (int)Math.Sqrt(255 * 255 - red * red - blue * blue);
             sliderColor.Color = Color.FromArgb((byte)255, (byte)red, (byte)green, (byte)blue);
+            float Brightness = 1.0f;
+            float Hue = (float)((float)PWM_Value) * 2 / 3 / 255;
+            float Saturation = 1.0f;
+            sliderColor.Color = HSBtoRGB(Hue, Saturation, Brightness);
             PWMSlider.Background = sliderColor;
+        }
+
+        /// <summary>
+        /// Conver  from HSB color space to RGB color space.
+        /// </summary>
+        /// <param name="hue">The hue value.</param>
+        /// <param name="saturation">The saturation value.</param>
+        /// <param name="brightness">The brightness value.</param>
+        /// <returns>An array Containing the converted RGB color space</returns>
+        public static Color HSBtoRGB(float hue, float saturation, float brightness)
+        {
+            int r = 0, g = 0, b = 0;
+            if (saturation == 0)
+            {
+                r = g = b = (int)(brightness * 255.0f + 0.5f);
+            }
+            else
+            {
+                float h = (hue - (float)Math.Floor(hue)) *6.0f;
+                float f = h - (float)Math.Floor(h);
+                float p = brightness * (1.0f - saturation);
+                float q = brightness * (1.0f - saturation * f);
+                float t = brightness * (1.0f - (saturation * (1.0f - f)));
+                switch ((int)h)
+                {
+                    case 0:
+                        r = (int)(brightness * 255.0f + 0.5f);
+                        g = (int)(t * 255.0f + 0.5f);
+                        b = (int)(p * 255.0f + 0.5f);
+                        break;
+                    case 1:
+                        r = (int)(q * 255.0f + 0.5f);
+                        g = (int)(brightness * 255.0f + 0.5f);
+                        b = (int)(p * 255.0f + 0.5f);
+                        break;
+                    case 2:
+                        r = (int)(p * 255.0f + 0.5f);
+                        g = (int)(brightness * 255.0f + 0.5f);
+                        b = (int)(t * 255.0f + 0.5f);
+                        break;
+                    case 3:
+                        r = (int)(p * 255.0f + 0.5f);
+                        g = (int)(q * 255.0f + 0.5f);
+                        b = (int)(brightness * 255.0f + 0.5f);
+                        break;
+                    case 4:
+                        r = (int)(t * 255.0f + 0.5f);
+                        g = (int)(p * 255.0f + 0.5f);
+                        b = (int)(brightness * 255.0f + 0.5f);
+                        break;
+                    case 5:
+                        r = (int)(brightness * 255.0f + 0.5f);
+                        g = (int)(p * 255.0f + 0.5f);
+                        b = (int)(q * 255.0f + 0.5f);
+                        break;
+                }
+            }
+            return Color.FromArgb(Convert.ToByte(255), Convert.ToByte(r), Convert.ToByte(g), Convert.ToByte(b));
         }
 
         /// <summary>
@@ -369,7 +454,7 @@ namespace Peltier_GUI
         {
             System.Windows.Application.Current.Shutdown();
         }
-        
+
         /// <summary>
         /// Graphic Window size change Event Handler.
         /// It repaint the graphic windows adapting ZedGraph
@@ -423,6 +508,27 @@ namespace Peltier_GUI
             autoGroupBox.IsEnabled = true;
         }
 
+        /// <summary>
+        /// New FW Click event handler.
+        /// This function show a new custom window to download a new FW into the microcontroler.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void NewFW_Click(object sender, RoutedEventArgs e)
+        {
+            NewFW_Download_Window wnd = new NewFW_Download_Window(isArduinoBootloader);
+            wnd.ShowDialog();
+        }
+
+        private void Debug_Click(object sender, RoutedEventArgs e)
+        {
+            //if (debugWnd == null)
+            {
+                debugWnd = new DebugWindow(this);
+            }
+            debugWnd.Show();
+        }
+        
         private void AVRCOMListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -562,5 +668,6 @@ namespace Peltier_GUI
         {
 
         }
+
     }
 }
